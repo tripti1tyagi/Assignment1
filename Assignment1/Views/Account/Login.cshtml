@@ -1,0 +1,79 @@
+﻿@model Assignment1.Models.Membership
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<style>
+    body {
+        background: url('@Url.Content("~/Content/Images/LoginBg.png")') no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    .login-container {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    .login-card {
+        position: fixed;
+        background-color: rgba(255, 255, 255, 0.95);
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+        width: 100%;
+        max-width: 370px;
+    }
+
+    .login-card h2,
+    .login-card h4 {
+        text-align: center;
+    }
+
+    .btn-custom {
+        width: 100%;
+    }
+</style>
+
+
+<div class="login-container">
+    <div class="login-card">
+        <h2>Login</h2>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-horizontal">
+                <h4>Membership</h4>
+                <hr />
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.UserName)
+                   
+                        @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                        
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Password)
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group mt-3 text-center">
+                        <input type="submit" value="Login" class="btn btn-primary px-5" />
+                    </div>
+                </div>
+        }
+
+        <div class="text-center mt-3">
+            @Html.ActionLink("Click to SignUp", "Signup")
+        </div>
+    </div>
+</div>

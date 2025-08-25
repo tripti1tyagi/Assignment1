@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "Contact Us";
+}
+
+<div class="container mt-5">
+    <div class="row shadow rounded overflow-hidden">
+        <!-- Left: Image -->
+        <div class="col-md-6 p-0">
+            <img src="@Url.Content("~/Content/Images/Contact Image.png")"
+                 alt="Contact Illustration"
+                 class="img-fluid h-100 w-100"
+                 style="object-fit: cover;" />
+        </div>
+
+        <!-- Right: Contact Info -->
+        <div class="col-md-6 bg-white p-4 d-flex flex-column justify-content-center">
+            <h2 class="text-info mb-3">Contact Us</h2>
+            <p class="lead">
+                If you have any questions or feedback, feel free to reach out to us. We're here to help!
+            </p>
+
+            <p>
+                To submit a query directly, please fill out our
+                <a href="@Url.Action("Create", "ContactQueries")" class="btn btn-outline-primary btn-sm ml-2">
+                    Submit Query Form
+                </a>
+            </p>
+
+            <div class="mb-3">
+                <p>
+                    <strong>Email Support:</strong>
+                    <a href="mailto:support@xyz.com" class="text-decoration-none">support@xyz.com</a>
+                </p>
+                <p><strong>Phone:</strong> +91-9368440427</p>
+            </div>
+
+            <p class="text-muted small">
+                Response time: within 24 hours (Mon–Fri)
+            </p>
+        </div>
+    </div>
+</div>

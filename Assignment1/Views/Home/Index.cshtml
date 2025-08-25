@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="text-center mb-5">
+    <h1 class="display-4">Welcome to Our Web Application</h1>
+    <p>This platform allows users to submit queries, manage categories and subcategories, and more!</p>
+    <a href="#" class="btn btn-primary btn-lg">Learn More About Us</a>
+</div>
+
+<div class="container">
+    <div class="row text-center">
+        <!-- Submit a Query -->
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 shadow">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Submit a Query</h4>
+                </div>
+                <img src="@Url.Content("~/Content/Images/Help1.png")"
+                     alt="Submit Query"
+                     class="img-fluid"
+                     style="height: 220px; width: 100%; object-fit: cover;" />
+                <div class="card-body">
+                    <p class="card-text">Have questions? Submit your query and we will respond promptly.</p>
+                    <a href="@Url.Action("Create", "ContactQueries")" class="btn btn-outline-primary">Submit Query</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- View Queries -->
+        <div class="col-md-6 mb-4">
+            <div class="card h-100 shadow">
+                <div class="card-header bg-success text-white">
+                    <h4 class="mb-0">View Queries</h4>
+                </div>
+                <img src="@Url.Content("~/Content/Images/AskMe.png")"
+                     alt="View Queries"
+                     class="img-fluid"
+                     style="height: 220px; width: 100%; object-fit: cover;" />
+                <div class="card-body">
+                    <p class="card-text">Check out past queries and find what you’re looking for.</p>
+                    <a href="@Url.Action("Index", "ContactQueries")" class="btn btn-outline-success">View Queries</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

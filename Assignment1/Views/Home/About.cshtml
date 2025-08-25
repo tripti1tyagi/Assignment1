@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "About Us";
+}
+
+<div class="container mt-5">
+    <div class="text-center mb-4">
+        <h2 class="display-4">About Us</h2>
+        <p class="lead">
+            Welcome to our web application! This platform allows users to raise queries, and enables administrators to manage those queries efficiently through a user-friendly interface.
+        </p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Our Mission</h4>
+            <p>
+                Our goal is to bridge the communication gap between users and organizations by providing a seamless system to submit, manage, and resolve queries.
+            </p>
+        </div>
+        <div class="col-md-6">
+            <h4>Features</h4>
+            <ul>
+                <li>Submit and track your queries</li>
+                <li>Admin dashboard for query management</li>
+                <li>Secure login and authorization</li>
+                <li>Error and event logging for diagnostics</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="mt-5 text-center">
+       <img src="@Url.Content("~/Content/Images/Teamefforts.png")"
+             class="img-fluid rounded shadow"
+             alt="Teamwork Image"
+             style="max-height: 200px;" />
+        <p class="mt-3 text-muted">Built with care using ASP.NET MVC and Bootstrap 4</p>
+    </div>
+</div>

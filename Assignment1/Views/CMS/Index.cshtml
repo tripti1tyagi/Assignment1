@@ -1,0 +1,37 @@
+﻿@model Assignment1.Models.CMSViewModel
+
+@{
+    ViewBag.Title = "CMS Page";
+}
+
+<h2>CMS - Manage Categories and Subcategories</h2>
+
+<hr />
+
+<h4>Create Category</h4>
+@using (Html.BeginForm("CreateCategory", "CMS", FormMethod.Post))
+{
+    <input type="text" name="CategoryName" placeholder="Enter Category Name" required />
+    <button type="submit" class="btn btn-primary">Add Category</button>
+}
+
+<hr />
+
+<h4>Create Subcategory</h4>
+@using (Html.BeginForm("CreateSubcategory", "CMS", FormMethod.Post))
+{
+    <input type="text" name="SubcategoryName" placeholder="Enter Subcategory Name" required />
+    <button type="submit" class="btn btn-success">Add Subcategory</button>
+}
+
+<hr />
+
+<h4>Map Subcategory to Category</h4>
+@using (Html.BeginForm("MapCategorySubcategory", "CMS", FormMethod.Post))
+{
+    @Html.DropDownListFor(m => m.SelectedCategoryId, Model.CategoryList, "Select Category", new { @class = "form-control" })
+    <br />
+    @Html.DropDownListFor(m => m.SelectedSubcategoryId, Model.SubcategoryList, "Select Subcategory", new { @class = "form-control" })
+    <br />
+    <button type="submit" class="btn btn-warning">Map</button>
+}

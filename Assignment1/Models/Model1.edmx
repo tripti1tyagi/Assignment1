@@ -1,0 +1,287 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AdbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AssignTable">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ContactNo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="EmailId" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="QueryText" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="SubmitDate" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CategorySubcategoryMappings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="SubcategoryId" Type="int" />
+        </EntityType>
+        <EntityType Name="ContactQueries">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ContactNo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="EmailId" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="QueryText" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="SubmitDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Subcategories">
+          <Key>
+            <PropertyRef Name="SubcategoryId" />
+          </Key>
+          <Property Name="SubcategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubcategoryName" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__CategoryS__Categ__4D94879B">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
+          <End Role="CategorySubcategoryMappings" Type="Self.CategorySubcategoryMappings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="CategorySubcategoryMappings">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CategoryS__Subca__4E88ABD4">
+          <End Role="Subcategories" Type="Self.Subcategories" Multiplicity="0..1" />
+          <End Role="CategorySubcategoryMappings" Type="Self.CategorySubcategoryMappings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subcategories">
+              <PropertyRef Name="SubcategoryId" />
+            </Principal>
+            <Dependent Role="CategorySubcategoryMappings">
+              <PropertyRef Name="SubcategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AdbModelStoreContainer">
+          <EntitySet Name="AssignTable" EntityType="Self.AssignTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CategorySubcategoryMappings" EntityType="Self.CategorySubcategoryMappings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContactQueries" EntityType="Self.ContactQueries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subcategories" EntityType="Self.Subcategories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__CategoryS__Categ__4D94879B" Association="Self.FK__CategoryS__Categ__4D94879B">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="CategorySubcategoryMappings" EntitySet="CategorySubcategoryMappings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CategoryS__Subca__4E88ABD4" Association="Self.FK__CategoryS__Subca__4E88ABD4">
+            <End Role="Subcategories" EntitySet="Subcategories" />
+            <End Role="CategorySubcategoryMappings" EntitySet="CategorySubcategoryMappings" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AdbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AssignTable">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContactNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmailId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="QueryText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SubmitDate" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ContactQuery">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContactNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmailId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="QueryText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SubmitDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="AdbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AssignTables" EntityType="Self.AssignTable" />
+          <EntitySet Name="ContactQueries" EntityType="Self.ContactQuery" />
+          <EntitySet Name="Users" EntityType="AdbModel.User" />
+          <EntitySet Name="Categories" EntityType="AdbModel.Categories" />
+          <EntitySet Name="CategorySubcategoryMappings" EntityType="AdbModel.CategorySubcategoryMappings" />
+          <EntitySet Name="Subcategories" EntityType="AdbModel.Subcategories" />
+          <AssociationSet Name="FK__CategoryS__Categ__4D94879B" Association="AdbModel.FK__CategoryS__Categ__4D94879B">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="CategorySubcategoryMappings" EntitySet="CategorySubcategoryMappings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CategoryS__Subca__4E88ABD4" Association="AdbModel.FK__CategoryS__Subca__4E88ABD4">
+            <End Role="Subcategories" EntitySet="Subcategories" />
+            <End Role="CategorySubcategoryMappings" EntitySet="CategorySubcategoryMappings" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CategorySubcategoryMappings" Relationship="AdbModel.FK__CategoryS__Categ__4D94879B" FromRole="Categories" ToRole="CategorySubcategoryMappings" />
+        </EntityType>
+        <EntityType Name="CategorySubcategoryMappings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryId" Type="Int32" />
+          <Property Name="SubcategoryId" Type="Int32" />
+          <NavigationProperty Name="Categories" Relationship="AdbModel.FK__CategoryS__Categ__4D94879B" FromRole="CategorySubcategoryMappings" ToRole="Categories" />
+          <NavigationProperty Name="Subcategories" Relationship="AdbModel.FK__CategoryS__Subca__4E88ABD4" FromRole="CategorySubcategoryMappings" ToRole="Subcategories" />
+        </EntityType>
+        <EntityType Name="Subcategories">
+          <Key>
+            <PropertyRef Name="SubcategoryId" />
+          </Key>
+          <Property Name="SubcategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubcategoryName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CategorySubcategoryMappings" Relationship="AdbModel.FK__CategoryS__Subca__4E88ABD4" FromRole="Subcategories" ToRole="CategorySubcategoryMappings" />
+        </EntityType>
+        <Association Name="FK__CategoryS__Categ__4D94879B">
+          <End Type="AdbModel.Categories" Role="Categories" Multiplicity="0..1" />
+          <End Type="AdbModel.CategorySubcategoryMappings" Role="CategorySubcategoryMappings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="CategorySubcategoryMappings">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CategoryS__Subca__4E88ABD4">
+          <End Type="AdbModel.Subcategories" Role="Subcategories" Multiplicity="0..1" />
+          <End Type="AdbModel.CategorySubcategoryMappings" Role="CategorySubcategoryMappings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subcategories">
+              <PropertyRef Name="SubcategoryId" />
+            </Principal>
+            <Dependent Role="CategorySubcategoryMappings">
+              <PropertyRef Name="SubcategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AdbModelStoreContainer" CdmEntityContainer="AdbEntities">
+          <EntitySetMapping Name="AssignTables">
+            <EntityTypeMapping TypeName="AdbModel.AssignTable">
+              <MappingFragment StoreEntitySet="AssignTable">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="QueryText" ColumnName="QueryText" />
+                <ScalarProperty Name="SubmitDate" ColumnName="SubmitDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContactQueries">
+            <EntityTypeMapping TypeName="AdbModel.ContactQuery">
+              <MappingFragment StoreEntitySet="ContactQueries">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="QueryText" ColumnName="QueryText" />
+                <ScalarProperty Name="SubmitDate" ColumnName="SubmitDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="AdbModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="AdbModel.Categories">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CategorySubcategoryMappings">
+            <EntityTypeMapping TypeName="AdbModel.CategorySubcategoryMappings">
+              <MappingFragment StoreEntitySet="CategorySubcategoryMappings">
+                <ScalarProperty Name="SubcategoryId" ColumnName="SubcategoryId" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subcategories">
+            <EntityTypeMapping TypeName="AdbModel.Subcategories">
+              <MappingFragment StoreEntitySet="Subcategories">
+                <ScalarProperty Name="SubcategoryName" ColumnName="SubcategoryName" />
+                <ScalarProperty Name="SubcategoryId" ColumnName="SubcategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

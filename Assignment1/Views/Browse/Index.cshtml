@@ -1,0 +1,31 @@
+﻿@model Assignment1.Models.CategorySubcategoryViewModel
+
+@{
+    ViewBag.Title = "Browse Categories";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Browse Categories</h2>
+
+@using (Html.BeginForm("Index", "Browse", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.Label("Select Category")
+        @Html.DropDownListFor(model => model.SelectedCategoryId,
+            new SelectList(Model.Categories, "Value", "Text"),
+            "Select a Category",
+            new { @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-primary mt-3">Fetch Subcategories</button> <br/> 
+}
+
+@if (Model.Subcategories != null && Model.Subcategories.Any())
+{
+    <h3>Subcategories:</h3>
+    <ul>
+        @foreach (var sub in Model.Subcategories)
+        {
+            <li>@sub.SubcategoryName</li>
+        }
+    </ul>
+}
